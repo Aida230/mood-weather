@@ -52,7 +52,6 @@ function mapWeatherCodeToName(code) {
     61: 'Rain',
     71: 'Snow',
     95: 'Thunderstorm'
-    // Puedes agregar más según la documentación de Open-Meteo
   };
 
   return codes[code] || 'Unknown';

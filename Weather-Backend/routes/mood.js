@@ -1,6 +1,6 @@
 import express from "express";
-import { getWeather } from "../services/weatherServices.js"; //lo crearé despues
-import { getMoodWeather } from "../utils/moodLogic.js"; //Lo crearé despues
+import { getWeather } from "../services/weatherService.js"; //lo crearé despues
+import { getMoodByWeather } from "../utils/moodLogic.js"; //Lo crearé despues
 
 //Crear el enrutador
 const router = express.Router();
