@@ -1,4 +1,5 @@
 //Paso 1: impotar librerias
+import rateLimit from 'express-rate-limit';
 import express from 'express';
 import dotenv from 'dotenv';
 import moodRoute from './routes/mood.js'
@@ -10,6 +11,18 @@ dotenv.config();
 //Paso 3: Crear el servidor con express
 
 const app = express();
+
+//Limitador de peticiones (100 por hora por IP)
+const limiter = rateLimit({
+  windowMs: 60 * 60 * 1000, // 1 hora
+  max: 100, // Máximo 100 peticiones por IP por hora
+  message: {
+    status: 429,
+    error: "Demasiadas peticiones desde esta IP, intenta más tarde."
+  }
+});
+
+app.use(limiter); // Se aplica a todas las rutas
 
 //Paso 4: Indicamos que use las rutas del /mood (esto lo crearé despues)
 
