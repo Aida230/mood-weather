@@ -1,4 +1,5 @@
 //Paso 1: impotar librerias
+import cors from 'cors'
 import rateLimit from 'express-rate-limit';
 import express from 'express';
 import dotenv from 'dotenv';
@@ -23,6 +24,9 @@ const limiter = rateLimit({
 });
 
 app.use(limiter); // Se aplica a todas las rutas
+app.use(cors({
+  origin: 'http://localhost:5173' // permite peticiones solo desde tu frontend
+}));
 
 //Paso 4: Indicamos que use las rutas del /mood (esto lo crearé despues)
 
