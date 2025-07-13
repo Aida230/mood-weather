@@ -5,6 +5,8 @@ import useResponsiveSize from "./hooks/useResponsiveSize";
 import { getEmoji } from "./utils/getEmoji";
 import { getActivityEmoji } from "./utils/getActivityEmoji.js";
 import { getBackgroundColor } from "./utils/getBackgroundColor.js";
+import MapView from "./components/MapView";
+
 
 function App() {
   const [city, setCity] = useState("");
@@ -23,6 +25,7 @@ function App() {
     try {
       const res = await axios.get(`http://localhost:3000/mood?city=${city}`);
       setData(res.data);
+      console.log("DATA RECIBIDA DEL BACKEND:", res.data);
       setError(null);
     } catch (err) {
       setError(
@@ -95,6 +98,7 @@ function App() {
           <p>
             <strong>Frase del día:</strong> {data.quote}
           </p>
+          <MapView lat={data.lat} lon={data.lon} city={data.city} />
         </div>
       )}
     </div>

@@ -32,7 +32,9 @@ export async function getWeather(city) {
     return {
       city: location.display_name.split(',')[0],
       weather: weatherCode,
-      temperature: `${weather.temperature}°C`
+      temperature: `${weather.temperature}°C`,
+      lat,
+      lon
     };
 
   } catch (error) {

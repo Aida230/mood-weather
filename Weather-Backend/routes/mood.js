@@ -26,6 +26,8 @@ router.get("/", async (req, res) => {
       city: weatherData.city,
       weather: weatherData.weather,
       temperature: weatherData.temperature,
+      lat: weatherData.lat, // 👈 añadimos lat
+      lon: weatherData.lon,
       mood: moodData.mood,
       activity: moodData.activity,
       quote: moodData.quote,
