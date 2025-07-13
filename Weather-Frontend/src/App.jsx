@@ -6,7 +6,7 @@ import { getEmoji } from "./utils/getEmoji";
 import { getActivityEmoji } from "./utils/getActivityEmoji.js";
 import { getBackgroundColor } from "./utils/getBackgroundColor.js";
 import MapView from "./components/MapView";
-
+import { getMeme } from "./utils/getMeme";
 
 function App() {
   const [city, setCity] = useState("");
@@ -82,8 +82,7 @@ function App() {
             <strong>Ciudad:</strong> {data.city}
           </p>
           <p className="text-lg">
-            <strong>Clima:</strong>
-            {getEmoji(data.weather)} {data.weather}
+            <strong>Clima:</strong> {getEmoji(data.weather)} {data.weather}
           </p>
           <p>
             <strong>Temperatura:</strong> {data.temperature}
@@ -92,13 +91,22 @@ function App() {
             <strong>Estado de ánimo:</strong> {data.mood}
           </p>
           <p>
-            <strong>Actividad recomendada:</strong>
+            <strong>Actividad recomendada:</strong>{" "}
             {getActivityEmoji(data.activity)} {data.activity}
           </p>
           <p>
             <strong>Frase del día:</strong> {data.quote}
           </p>
-          <MapView lat={data.lat} lon={data.lon} city={data.city} />
+
+          {/* GRID: Mapa y Meme */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 items-center">
+            <MapView lat={data.lat} lon={data.lon} city={data.city} />
+            <img
+              src={getMeme(data.mood)}
+              alt="meme"
+              className="rounded-lg shadow-lg max-h-[400px] w-full object-contain"
+            />
+          </div>
         </div>
       )}
     </div>
