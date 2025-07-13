@@ -64,7 +64,7 @@ function App() {
       {error && <p className="text-red-400 mt-4">{error}</p>}
 
       {data && !loading && (
-        <div className="mt-6 space-y-2">
+        <div className="mt-6 space-y-2 animate-fade-in">
           <p>
             <strong>Ciudad:</strong> {data.city}
           </p>
