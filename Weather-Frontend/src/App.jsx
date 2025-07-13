@@ -1,7 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
 import { PropagateLoader } from "react-spinners";
-import useResponsiveSize from './hooks/useResponsiveSize';
+import useResponsiveSize from "./hooks/useResponsiveSize";
+import { getEmoji } from "./utils/getEmoji";
+import { getActivityEmoji } from './utils/getActivityEmoji.js';
+import { getBackgroundColor } from './utils/getBackgroundColor.js';
+
 
 function App() {
   const [city, setCity] = useState("");
@@ -9,6 +13,8 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const dotSize = useResponsiveSize();
+  const bgClass = data ? getBackgroundColor(data.weather) : 'bg-gradient-to-br from-white to-blue-600';
+
 
   const fetchMoodWeather = async () => {
     if (!city) return;
@@ -29,7 +35,7 @@ function App() {
   };
 
   return (
-    <div className="p-8">
+    <div className={`min-h-screen p-8 text-center transition-all duration-500 ${bgClass}`}>
       <h1 className="text-5xl font-bold mb-4">Mood Weather 🌤️</h1>
       <input
         type="text"
@@ -58,12 +64,12 @@ function App() {
       {error && <p className="text-red-400 mt-4">{error}</p>}
 
       {data && !loading && (
-        <div className="mt-6 text-left">
+        <div className="mt-6 space-y-2">
           <p>
             <strong>Ciudad:</strong> {data.city}
           </p>
-          <p>
-            <strong>Clima:</strong> {data.weather}
+          <p className="text-lg">
+            <strong>Clima:</strong>{getEmoji(data.weather)} {data.weather}
           </p>
           <p>
             <strong>Temperatura:</strong> {data.temperature}
@@ -72,7 +78,7 @@ function App() {
             <strong>Estado de ánimo:</strong> {data.mood}
           </p>
           <p>
-            <strong>Actividad recomendada:</strong> {data.activity}
+            <strong>Actividad recomendada:</strong>{getActivityEmoji(data.activity)} {data.activity}
           </p>
           <p>
             <strong>Frase del día:</strong> {data.quote}
