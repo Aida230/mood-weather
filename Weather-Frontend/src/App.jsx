@@ -3,9 +3,8 @@ import axios from "axios";
 import { PropagateLoader } from "react-spinners";
 import useResponsiveSize from "./hooks/useResponsiveSize";
 import { getEmoji } from "./utils/getEmoji";
-import { getActivityEmoji } from './utils/getActivityEmoji.js';
-import { getBackgroundColor } from './utils/getBackgroundColor.js';
-
+import { getActivityEmoji } from "./utils/getActivityEmoji.js";
+import { getBackgroundColor } from "./utils/getBackgroundColor.js";
 
 function App() {
   const [city, setCity] = useState("");
@@ -13,8 +12,9 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const dotSize = useResponsiveSize();
-  const bgClass = data ? getBackgroundColor(data.weather) : 'bg-gradient-to-br from-white to-blue-600';
-
+  const bgClass = data
+    ? getBackgroundColor(data.weather)
+    : "bg-gradient-to-br from-white to-blue-600";
 
   const fetchMoodWeather = async () => {
     if (!city) return;
@@ -35,21 +35,31 @@ function App() {
   };
 
   return (
-    <div className={`min-h-screen p-8 text-center transition-all duration-500 ${bgClass}`}>
+    <div
+      className={`min-h-screen p-8 text-center transition-all duration-500 ${bgClass}`}
+    >
       <h1 className="text-5xl font-bold mb-4">Mood Weather 🌤️</h1>
-      <input
-        type="text"
-        placeholder="Escribe una ciudad"
-        className="p-2 border rounded text-black"
-        value={city}
-        onChange={(e) => setCity(e.target.value)}
-      />
-      <button
-        onClick={fetchMoodWeather}
-        className="ml-2 px-4 py-2 bg-blue-500 text-white rounded"
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          fetchMoodWeather();
+        }}
       >
-        Buscar
-      </button>
+        <input
+          type="text"
+          placeholder="Escribe una ciudad"
+          className="p-2 border rounded text-black"
+          required
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+        />
+        <button
+          type="submit"
+          className="ml-2 px-4 py-2 bg-blue-500 text-white rounded cursor-pointer"
+        >
+          Buscar
+        </button>
+      </form>
 
       {loading && (
         <div className="mt-4 flex justify-center">
@@ -69,7 +79,8 @@ function App() {
             <strong>Ciudad:</strong> {data.city}
           </p>
           <p className="text-lg">
-            <strong>Clima:</strong>{getEmoji(data.weather)} {data.weather}
+            <strong>Clima:</strong>
+            {getEmoji(data.weather)} {data.weather}
           </p>
           <p>
             <strong>Temperatura:</strong> {data.temperature}
@@ -78,7 +89,8 @@ function App() {
             <strong>Estado de ánimo:</strong> {data.mood}
           </p>
           <p>
-            <strong>Actividad recomendada:</strong>{getActivityEmoji(data.activity)} {data.activity}
+            <strong>Actividad recomendada:</strong>
+            {getActivityEmoji(data.activity)} {data.activity}
           </p>
           <p>
             <strong>Frase del día:</strong> {data.quote}
