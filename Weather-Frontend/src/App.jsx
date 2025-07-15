@@ -36,7 +36,7 @@ function App() {
 
   return (
     <div
-      className={`min-h-screen p-8 text-center transition-all duration-500 ${bgClass}`}
+      className={`min-h-screen p-8 bg-gradient-to-br from-indigo-900 via-sky-900 to-blue-800 text-white ${bgClass}`}
     >
       <SearchForm city={city} setCity={setCity} onSubmit={fetchMoodWeather} />
       {loading && (
@@ -49,7 +49,11 @@ function App() {
         </div>
       )}
       {error && <p className="text-red-400 mt-4">{error}</p>}
-      {data && !loading && <WeatherResult data={data} />}
+      {data && !loading && (
+        <div className="animate-fade-in">
+          <WeatherResult data={data} />
+        </div>
+      )}
     </div>
   );
 }

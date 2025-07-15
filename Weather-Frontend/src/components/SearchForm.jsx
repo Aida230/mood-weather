@@ -1,6 +1,6 @@
 const SearchForm = ({ city, setCity, onSubmit }) => {
   return (
-    <div>
+    <div className="p-8 text-center">
       <h1 className="text-5xl font-bold mb-4">Mood Weather 🌤️</h1>
       <form
         onSubmit={(e) => {
