@@ -1,11 +1,35 @@
-const SearchForm = ({ city, setCity, onSubmit }) => {
+import { useState } from "react";
+import axios from "axios";
+import { PropagateLoader } from "react-spinners";
+
+const SearchForm = ({ onResult }) => {
+  const [city, setCity] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const fetchMoodWeather = async () => {
+    if (!city) return;
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      const res = await axios.get(`http://localhost:3000/mood?city=${city}`);
+      onResult(res.data); // delegamos el resultado al padre
+    } catch (err) {
+      setError(err.response?.data?.error || "Error al conectar con el servidor");
+      onResult(null); // limpiamos resultados si hay error
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <div className="p-8 text-center">
-      <h1 className="text-5xl font-bold mb-4">Mood Weather 🌤️</h1>
+    <div className="p-8 text-center max-w-xl mx-auto">
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          onSubmit();
+          fetchMoodWeather();
         }}
       >
         <input
@@ -23,6 +47,14 @@ const SearchForm = ({ city, setCity, onSubmit }) => {
           Buscar
         </button>
       </form>
+
+      {loading && (
+        <div className="mt-4 flex justify-center">
+          <PropagateLoader color="#3b82f6" size={10} speedMultiplier={0.5} />
+        </div>
+      )}
+
+      {error && <p className="text-red-400 mt-4">{error}</p>}
     </div>
   );
 };
