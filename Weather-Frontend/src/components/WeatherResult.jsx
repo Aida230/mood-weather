@@ -12,7 +12,7 @@ const WeatherResult = ({ children }) => {
       {children(setData)}
 
       {data && (
-        <div className="animate-fade-in mt-10 max-w-4xl mx-auto px-4">
+        <div className="animate-fade-in mt-10 max-w-4xl mx-auto px-4 pb-6">
           <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl shadow-lg border border-white/20 text-left space-y-4">
             <h2 className="text-3xl font-bold text-white flex items-center gap-2">
               {getEmoji(data.weather)} {data.weather}

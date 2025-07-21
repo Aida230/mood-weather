@@ -15,10 +15,10 @@ const SearchForm = ({ onResult }) => {
 
     try {
       const res = await axios.get(`http://localhost:3000/mood?city=${city}`);
-      onResult(res.data); // delegamos el resultado al padre
+      onResult(res.data);
     } catch (err) {
       setError(err.response?.data?.error || "Error al conectar con el servidor");
-      onResult(null); // limpiamos resultados si hay error
+      onResult(null);
     } finally {
       setLoading(false);
     }
@@ -35,7 +35,7 @@ const SearchForm = ({ onResult }) => {
         <input
           type="text"
           placeholder="Escribe una ciudad"
-          className="p-2 border rounded text-black"
+          className="p-2 border rounded text-blue-400"
           required
           value={city}
           onChange={(e) => setCity(e.target.value)}
@@ -50,7 +50,7 @@ const SearchForm = ({ onResult }) => {
 
       {loading && (
         <div className="mt-4 flex justify-center">
-          <PropagateLoader color="#3b82f6" size={10} speedMultiplier={0.5} />
+          <PropagateLoader color="#3b82f6" size={20} speedMultiplier={0.6} />
         </div>
       )}
 
