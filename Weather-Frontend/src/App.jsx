@@ -1,8 +1,8 @@
-import Hero from "./Layout/Hero";
+import Home from "./Layout/Home";
 
 function App() {
   return (
-      <Hero />
+      <Home />
   );
 }
 

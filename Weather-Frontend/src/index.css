@@ -15,3 +15,20 @@
 .animate-fade-in {
   animation: fade-in 0.6s ease-out;
 }
+
+@keyframes banner-scroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-banner-scroll {
+  animation: banner-scroll 20s linear infinite;
+}
+
+.animate-banner-scroll:hover {
+  animation-play-state: paused;
+}

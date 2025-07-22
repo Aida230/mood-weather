@@ -2,23 +2,23 @@ import { useState } from "react";
 import axios from "axios";
 import { PropagateLoader } from "react-spinners";
 
-const SearchForm = ({ onResult }) => {
+const SearchForm = ({ onSearchComplete }) => {
   const [city, setCity] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  // Función para hacer la petición al backend
   const fetchMoodWeather = async () => {
     if (!city) return;
-
     setLoading(true);
     setError(null);
 
     try {
       const res = await axios.get(`http://localhost:3000/mood?city=${city}`);
-      onResult(res.data);
+      onSearchComplete(res.data); // Devolvemos los datos al padre
     } catch (err) {
       setError(err.response?.data?.error || "Error al conectar con el servidor");
-      onResult(null);
+      onSearchComplete(null); // Indicamos que falló
     } finally {
       setLoading(false);
     }
@@ -36,9 +36,9 @@ const SearchForm = ({ onResult }) => {
           type="text"
           placeholder="Escribe una ciudad"
           className="p-2 border rounded text-blue-400"
-          required
           value={city}
           onChange={(e) => setCity(e.target.value)}
+          required
         />
         <button
           type="submit"
