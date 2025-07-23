@@ -1,6 +1,6 @@
 function DecorativeBanner() {
   return (
-    <div className="hidden md:block fixed top-50 right-4 z-10 w-100 h-[500px] overflow-hidden rounded-xl shadow-lg">
+    <div className="hidden md:block fixed top-40 right-6 z-10 w-100 h-[500px] overflow-hidden rounded-xl shadow-lg">
       <div className="animate-banner-scroll space-y-4">
         <img src="/Banner.jpg" className="w-full rounded shadow h-60" alt="Decorativo 1" />
         <img src="/bg-arboles.jpg" className="w-full rounded shadow h-60" alt="Decorativo 2" />

@@ -14,9 +14,11 @@ const Navbar = () => {
               </li>
               <li>
                 <a href="#">About</a>
-              </li><li>
+              </li>
+              <li>
                 <a href="#">About</a>
-              </li><li>
+              </li>
+              <li>
                 <a href="#">About</a>
               </li>
             </ul>
@@ -24,7 +26,7 @@ const Navbar = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
