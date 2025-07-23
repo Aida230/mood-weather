@@ -32,3 +32,18 @@
 .animate-banner-scroll:hover {
   animation-play-state: paused;
 }
+
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-80px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 1.2s ease-out both;
+}
