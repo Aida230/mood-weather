@@ -5,7 +5,7 @@ import SearchForm from "../components/SearchForm";
 import { useState } from "react";
 
 const TextVideo = () => {
-   const [data, setData] = useState(null);
+  const [data, setData] = useState(null);
   return (
     <div className="bg-black/20 h-full text-white relative z-50">
       <div className="h-full flex justify-center items-center p-4">
@@ -19,7 +19,7 @@ const TextVideo = () => {
               nos habla.
             </p>
             <SearchForm onSearchComplete={setData} />
-{data && <WeatherResult data={data} />}
+            {data && <WeatherResult data={data} />}
           </div>
         </div>
       </div>
