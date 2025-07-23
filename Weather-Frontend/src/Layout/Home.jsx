@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Header from "../Layout/Header";
 import Footer from "../Layout/Footer";
 import SearchForm from "../components/SearchForm";
 import WeatherResult from "../components/WeatherResult";
@@ -12,7 +11,6 @@ function Home() {
 
   return (
     <div className="min-h-screen bg-gray-950 text-white flex flex-col">
-      <Header />
       <main className="flex-1 flex flex-col items-center px-4 py-8">
         <SearchForm onSearchComplete={setData} />
         {data ? (

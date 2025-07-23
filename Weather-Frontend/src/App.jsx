@@ -1,5 +1,5 @@
+import Navbar from "./Layout/Navbar";
 import Home from "./Layout/Home";
-
 function App() {
   return (
     <div>
@@ -13,6 +13,7 @@ function App() {
         >
           <source src="/tormenta.mp4" type="video/mp4" />
         </video>
+        <Navbar />
       </div>
       <Home />
     </div>
