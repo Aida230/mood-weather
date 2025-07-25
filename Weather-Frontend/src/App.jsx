@@ -1,7 +1,7 @@
 import Home from "./Layout/Home";
 import Navbar from "./Layout/Navbar";
 import TextVideo from "./components/textVideo";
-import Images from "./components/Images";
+import IconsCard from "./components/IconsCard";
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
         <Navbar />
         <TextVideo />
       </div>
-      <Images />
+      <IconsCard />
       <Home />
     </div>
   );

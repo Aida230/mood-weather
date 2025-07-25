@@ -10,7 +10,7 @@ function Home() {
   const [data, setData] = useState(null);
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white flex flex-col">
+    <div className="min-h-screen bg-black text-white flex flex-col">
       <main className="flex-1 flex flex-col items-center px-4 py-8">
         <SearchForm onSearchComplete={setData} />
         {data ? (
@@ -19,7 +19,6 @@ function Home() {
           <WeatherDescription />
         )}
       </main>
-      <DecorativeBanner /> {/* visible solo en escritorio */}
       <Footer />
     </div>
   );
