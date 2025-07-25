@@ -3,7 +3,6 @@ import Footer from "../Layout/Footer";
 import SearchForm from "../components/SearchForm";
 import WeatherResult from "../components/WeatherResult";
 import WeatherDescription from "../components/WeatherDescription"; // ➕ nuevo
-import DecorativeBanner from "../Layout/DecorativeBanner";     // ➕ nuevo
 
 
 function Home() {

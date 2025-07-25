@@ -2,6 +2,7 @@ import Home from "./Layout/Home";
 import Navbar from "./Layout/Navbar";
 import TextVideo from "./components/textVideo";
 import IconsCard from "./components/IconsCard";
+import Banner from "./Layout/Banner";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <TextVideo />
       </div>
       <IconsCard />
+      <Banner/>
       <Home />
     </div>
   );

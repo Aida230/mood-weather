@@ -42,7 +42,7 @@ const IconsCard = () => {
         <img
           src="/Gif3.gif"
           alt="Decoración animada"
-          className="w-full h-full object-cover mix-blend-screen opacity-60 translate-y-16"
+          className="w-full h-full object-cover mix-blend-screen opacity-60 translate-y-20"
         />
       </div>
     </div>
