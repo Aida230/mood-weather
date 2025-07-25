@@ -1,7 +1,3 @@
-import WeatherDescription from "../components/WeatherDescription"; // ➕ nuevo
-import SearchForm from "../components/SearchForm";
-
-
 const TextVideo = () => {
   return (
     <div className="bg-black/20 h-full text-white relative z-50">

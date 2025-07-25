@@ -19,9 +19,6 @@ const Banner = () => {
           <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-4">
            Mediante sensores de radar, infrarrojos y microondas de última generación, ofrecemos mapas meteorológicos y pronósticos de alta resolución para ayudar a las comunidades a prepararse frente a cambios bruscos del clima y eventos extremos.
           </p>
-          <button className="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-md text-sm">
-            View All
-          </button>
         </div>
       </div>
 
@@ -34,9 +31,6 @@ const Banner = () => {
           <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-4">
             Nuestros sistemas satelitales avanzados escanean continuamente la atmósfera terrestre para recopilar datos en tiempo real sobre temperatura, formaciones nubosas y actividad de tormentas. Esto nos permite mejorar la precisión de las predicciones y comprender mejor el cambio climático.
           </p>
-          <button className="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-md text-sm">
-            Explore
-          </button>
         </div>
 
         {/* Imagen derecha */}

@@ -1,8 +1,8 @@
 import Home from "./Layout/Home";
 import Navbar from "./Layout/Navbar";
-import TextVideo from "./components/textVideo";
-import IconsCard from "./components/IconsCard";
+import TextVideo from "./components/TextVideo";
 import Banner from "./Layout/Banner";
+import Footer from "./Layout/Footer";
 
 function App() {
   return (
@@ -20,9 +20,9 @@ function App() {
         <Navbar />
         <TextVideo />
       </div>
-      <IconsCard />
+      <Home/>
       <Banner/>
-      <Home />
+      <Footer/>
     </div>
   );
 }
