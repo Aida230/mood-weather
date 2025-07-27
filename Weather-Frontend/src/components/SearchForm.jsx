@@ -1,48 +1,53 @@
 import { useState } from "react";
 import axios from "axios";
 import { PropagateLoader } from "react-spinners";
+import { Search } from "lucide-react";
+import { getMoodWeatherByCity } from "../services/moodServices";
 
 const SearchForm = ({ onSearchComplete }) => {
   const [city, setCity] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // Función para hacer la petición al backend
   const fetchMoodWeather = async () => {
     if (!city) return;
     setLoading(true);
     setError(null);
 
     try {
-      const res = await axios.get(`http://localhost:3000/mood?city=${city}`);
-      onSearchComplete(res.data); // Devolvemos los datos al padre
+      const data = await getMoodWeatherByCity(city);
+      onSearchComplete(data);
     } catch (err) {
-      setError(err.response?.data?.error || "Error al conectar con el servidor");
-      onSearchComplete(null); // Indicamos que falló
+      setError(
+        err.response?.data?.error || "Error al conectar con el servidor"
+      );
+      onSearchComplete(null);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="p-8 text-center max-w-xl mx-auto">
+    <div className="w-full max-w-xl mx-auto mt-8">
       <form
         onSubmit={(e) => {
           e.preventDefault();
           fetchMoodWeather();
         }}
+        className="flex items-center bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-6 py-3 shadow-lg"
       >
+        <Search className="text-white mr-4" />
         <input
           type="text"
-          placeholder="Escribe una ciudad"
-          className="p-2 border rounded text-blue-400"
+          placeholder="Buscar ciudad..."
           value={city}
           onChange={(e) => setCity(e.target.value)}
           required
+          className="bg-transparent text-white placeholder-white outline-none w-full"
         />
         <button
           type="submit"
-          className="ml-2 px-4 py-2 bg-blue-500 text-white rounded cursor-pointer"
+          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-full ml-4 transition duration-200"
         >
           Buscar
         </button>
@@ -54,7 +59,7 @@ const SearchForm = ({ onSearchComplete }) => {
         </div>
       )}
 
-      {error && <p className="text-red-400 mt-4">{error}</p>}
+      {error && <p className="text-red-400 mt-4 text-center">{error}</p>}
     </div>
   );
 };
