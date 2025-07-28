@@ -15,13 +15,32 @@ const SearchForm = ({ onSearchComplete, resetTrigger }) => {
     }
   }, [resetTrigger]);
 
+  // Función auxiliar para validar la ciudad
+  const isValidCityName = (name) => {
+    const trimmed = name.trim();
+    return /^[a-zA-Z\sáéíóúÁÉÍÓÚüÜñÑ'-]{2,50}$/.test(trimmed);
+  };
+
   const fetchMoodWeather = async () => {
-    if (!city) return;
+    const trimmedCity = city.trim();
+
+    if (!trimmedCity) {
+      setError("Por favor escribe una ciudad.");
+      onSearchComplete(null);
+      return;
+    }
+
+    if (!isValidCityName(trimmedCity)) {
+      setError("El nombre de la ciudad contiene caracteres inválidos.");
+      onSearchComplete(null);
+      return;
+    }
+
     setLoading(true);
     setError(null);
 
     try {
-      const data = await getMoodWeatherByCity(city);
+      const data = await getMoodWeatherByCity(trimmedCity);
       onSearchComplete(data);
     } catch (err) {
       setError(
@@ -46,6 +65,7 @@ const SearchForm = ({ onSearchComplete, resetTrigger }) => {
         <input
           type="text"
           placeholder="Buscar ciudad..."
+          pattern="[a-zA-Z\sáéíóúÁÉÍÓÚüÜñÑ'-]{2,50}"
           value={city}
           onChange={(e) => setCity(e.target.value)}
           required
