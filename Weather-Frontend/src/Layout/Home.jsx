@@ -10,9 +10,9 @@ function Home() {
   return (
     <div className="bg-black text-white flex flex-col">
       <main>
-        <SearchForm onSearchComplete={setData} />
+        <SearchForm onSearchComplete={setData} resetTrigger={data === null} />
         {data ? (
-          <WeatherResult data={data} />
+          <WeatherResult data={data} onReset={() => setData(null)} />
         ) : (
           <IconsCard />
         )}

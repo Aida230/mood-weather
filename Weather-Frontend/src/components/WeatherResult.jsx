@@ -3,7 +3,7 @@ import { getActivityEmoji } from "../utils/getActivityEmoji";
 import { getMeme } from "../utils/getMeme";
 import MapView from "./MapView";
 
-const WeatherResult = ({ data, onBackClick }) => {
+const WeatherResult = ({ data, onReset }) => {
   if (!data) return null;
 
   return (
@@ -27,7 +27,7 @@ const WeatherResult = ({ data, onBackClick }) => {
           </div>
 
           <button
-            onClick={onBackClick}
+            onClick={onReset}
             className="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md text-sm"
           >
             Buscar otra ciudad

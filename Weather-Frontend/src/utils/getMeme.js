@@ -1,10 +1,13 @@
 export function getMeme(mood) {
   const moodMap = {
-    "Energía positiva y claridad mental": "/energetic.jfif",
-    "Tristeza y reflexión": "/sad.jpg",
-    "Relajación y descanso": "/relaxed.jpg",
-    "Felicidad y motivación": "/happy.jpg",
+    "Energía positiva y claridad mental": "/gato-feliz2.jpg",
+    "Perfecto para una caminata introspectiva": "/disociado.webp",
+    "Melancólico pero reconfortante": "/llorar.jpeg",
+    "Paciencia y belleza en lo simple": "/nieve.jfif",
+    "Poder y transformación interior": "/grito.avif",
+    "Momento de pausa y reflexión": "/sad.jpg",
+    "Abierto a lo inesperado": "/gif-gato.gif"
   };
 
-  return moodMap[mood] || "/sad.jpg"; // valor por defecto
+  return moodMap[mood] || "/llorar.jpeg";
 }

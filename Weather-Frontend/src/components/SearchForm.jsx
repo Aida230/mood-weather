@@ -1,13 +1,19 @@
-import { useState } from "react";
-import axios from "axios";
+import { useState, useEffect } from "react";
 import { PropagateLoader } from "react-spinners";
 import { Search } from "lucide-react";
 import { getMoodWeatherByCity } from "../services/moodServices";
 
-const SearchForm = ({ onSearchComplete }) => {
+const SearchForm = ({ onSearchComplete, resetTrigger }) => {
   const [city, setCity] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (resetTrigger) {
+      setCity("");
+      setError(null);
+    }
+  }, [resetTrigger]);
 
   const fetchMoodWeather = async () => {
     if (!city) return;
