@@ -1,6 +1,6 @@
 const Banner = () => {
   return (
-    <div className="bg-black text-white py-16 px-6 sm:px-12 space-y-24">
+    <div id="banner" className="bg-black text-white py-16 px-6 sm:px-12 space-y-24">
       {/* Sección 1: Imagen izquierda, texto derecha */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         {/* Imagen izquierda */}

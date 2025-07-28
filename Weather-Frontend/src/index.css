@@ -47,3 +47,7 @@
 .animate-slide-in-left {
   animation: slide-in-left 1.2s ease-out both;
 }
+
+html {
+  scroll-behavior: smooth;
+}

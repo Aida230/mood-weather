@@ -11,7 +11,9 @@ const TextVideo = () => {
               mundo, el suspiro del día, el lenguaje sutil con que la naturaleza
               nos habla.
             </p>
-            <button className="bg-blue-600 text-white hover:bg-blue-800 px-4 py-2 rounded-md duration-200 cursor-pointer">Saber mas</button>
+            <a href="#banner">
+              <button className="bg-blue-600 text-white hover:bg-blue-800 px-4 py-2 rounded-md duration-200 cursor-pointer">Saber mas</button>
+            </a>
           </div>
         </div>
       </div>
