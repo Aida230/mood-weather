@@ -1,6 +1,6 @@
 import { getEmoji } from "../utils/getEmoji";
 import { getActivityEmoji } from "../utils/getActivityEmoji";
-import { getMeme } from "../utils/getMeme";
+import { getMemeByWeather } from "../utils/getMemeByWeather";
 import MapView from "./MapView";
 
 const WeatherResult = ({ data, onReset }) => {
@@ -40,7 +40,7 @@ const WeatherResult = ({ data, onReset }) => {
             <MapView lat={data.lat} lon={data.lon} city={data.city} />
           </div>
           <img
-            src={getMeme(data.mood)}
+            src={getMemeByWeather(data.weather)}
             alt="meme"
             className="rounded-xl shadow-xl object-contain w-full max-h-[300px]"
           />
