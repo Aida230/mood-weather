@@ -1,43 +1,43 @@
-//Paso 1: impotar librerias
-import cors from 'cors'
+// Paso 1: importar librerías
 import rateLimit from 'express-rate-limit';
 import express from 'express';
 import dotenv from 'dotenv';
-import moodRoute from './routes/mood.js'
-
-//Paso 2: Configuramos dotenv para usar variables de entorno
+import helmet from 'helmet';
+import cors from 'cors';
+import moodRoute from './routes/mood.js';
 
 dotenv.config();
 
-//Paso 3: Crear el servidor con express
-
 const app = express();
 
-//Limitador de peticiones (100 por hora por IP)
+// Paso 2: aplicar Helmet
+app.use(helmet());
+
+// Paso 3: configurar CORS
+app.use(cors({
+  origin: "http://localhost:5173", // el frontend de Vite en desarrollo
+  methods: ["GET"], // solo permitimos lectura
+  optionsSuccessStatus: 200
+}));
+
+// Paso 4: rate limiter
 const limiter = rateLimit({
-  windowMs: 60 * 60 * 1000, // 1 hora
-  max: 100, // Máximo 100 peticiones por IP por hora
+  windowMs: 60 * 60 * 1000,
+  max: 100,
   message: {
     status: 429,
     error: "Demasiadas peticiones desde esta IP, intenta más tarde."
   }
 });
 
-app.use(limiter); // Se aplica a todas las rutas
-app.use(cors({
-  origin: 'http://localhost:5173' // permite peticiones solo desde tu frontend
-}));
+app.use(limiter);
 
-//Paso 4: Indicamos que use las rutas del /mood (esto lo crearé despues)
-
+// Paso 5: rutas
 app.use('/mood', moodRoute);
 
-//Paso 5: Definimos el puerto
-
+// Paso 6: puerto
 const PORT = process.env.PORT || 3000;
 
-//Paso 6: Encendemos el servidor
-
 app.listen(PORT, () => {
-  console.log(`Mood Weather API funcionando en http://localhost:${PORT}`)
+  console.log(`Mood Weather API funcionando en http://localhost:${PORT}`);
 });
