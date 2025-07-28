@@ -16,6 +16,7 @@ export async function getWeather(city) {
       lon
     };
   } catch (error) {
-    throw new Error(`Error al obtener el clima: ${error.message}`);
+    // Importante: solo lanzamos el mensaje legible
+    throw new Error(error.message || "Error inesperado al obtener el clima");
   }
 }

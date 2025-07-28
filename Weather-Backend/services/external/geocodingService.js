@@ -1,15 +1,22 @@
 import axios from "axios";
 
 export async function getCoordinatesByCity(city) {
-  const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(city)}&format=json&limit=1`;
-  const res = await axios.get(url);
-  const location = res.data[0];
+  try {
+    const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(city)}&format=json&limit=1`;
+    const res = await axios.get(url);
 
-  if (!location) throw new Error("No se encontraron coordenadas para esta ciudad");
+    if (!res.data || res.data.length === 0) {
+      throw new Error("Ciudad no encontrada");
+    }
 
-  return {
-    lat: location.lat,
-    lon: location.lon,
-    displayName: location.display_name
-  };
+    const location = res.data[0];
+
+    return {
+      lat: location.lat,
+      lon: location.lon,
+      displayName: location.display_name
+    };
+  } catch (error) {
+    throw new Error(`Error al obtener coordenadas: ${error.message}`);
+  }
 }
