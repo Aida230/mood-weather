@@ -1,5 +1,6 @@
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { Icon } from 'leaflet';
+import ChangeView from './ChangeView';
 
 const customIcon = new Icon({
   iconUrl: 'https://cdn-icons-png.flaticon.com/512/1116/1116453.png',
@@ -9,9 +10,12 @@ const customIcon = new Icon({
 function MapView({ lat, lon, city }) {
   if (!lat || !lon) return null;
 
+  const position = [lat, lon];
+
   return (
     <div className="mt-6 w-full h-[400px] rounded shadow-lg overflow-hidden">
       <MapContainer center={[lat, lon]} zoom={10} style={{ height: '100%', width: '100%' }}>
+        <ChangeView center={position} zoom={10} />
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
