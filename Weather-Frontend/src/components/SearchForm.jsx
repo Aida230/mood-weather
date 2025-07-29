@@ -63,6 +63,7 @@ const SearchForm = ({ onSearchComplete, resetTrigger }) => {
       >
         <Search className="text-white mr-4" />
         <input
+          id="city-input"
           type="text"
           placeholder="Buscar ciudad..."
           pattern="[a-zA-Z\sáéíóúÁÉÍÓÚüÜñÑ'-]{2,50}"
