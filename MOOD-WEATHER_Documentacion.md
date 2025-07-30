@@ -27,27 +27,28 @@
 ## 🔧 Estructura del Proyecto
 
 \`\`\`
-MOOD-WEATHER/
-├── backend/
-│   ├── server.js
-│   ├── routes/
-│   │   └── mood.js
-│   ├── services/
-│   │   └── weatherService.js
-│   └── utils/
-│       └── moodLogic.js (pendiente)
-├── frontend/
-│   ├── index.html
-│   ├── main.jsx
-│   ├── App.jsx
-│   ├── App.css
-│   ├── index.css
-│   ├── hooks/
-│   │   └── useResponsiveSize.js
-│   └── utils/
-│       ├── getEmoji.js
-│       ├── getActivityEmoji.js
-│       └── getBackgroundColor.js
+backend/
+│
+├── controllers/ # Lógica principal de negocio
+│ └── moodController.js
+│
+├── routes/ # Definición de rutas Express
+│ └── mood.js
+│
+├── services/ # Servicios del dominio
+│ ├── weatherService.js
+│ └── external/ # Integraciones externas
+│ ├── geocodingService.js
+│ ├── openMeteoService.js
+│ └── weatherCodeMapper.js
+│
+├── utils/ # Lógica auxiliar
+│ └── moodLogic.js
+│
+├── tests/ # Pruebas unitarias
+│ └── getMoodByWeather.test.js
+│
+└── server.js # Entry point
 \`\`\`
 
 ---
@@ -118,6 +119,7 @@ plugins: [tailwindcss(), react()],
   "dev": "vite",
   "build": "vite build",
   "lint": "eslint .",
+  "test": "vitest",
   "preview": "vite preview"
 }
 \`\`\`
@@ -125,8 +127,5 @@ plugins: [tailwindcss(), react()],
 ---
 
 ## 🔜 Pendientes o Futuras Mejoras
-- Implementar el archivo `moodLogic.js` para generar el estado de ánimo basado en el clima.
-- Manejo avanzado de errores y validaciones.
 - Despliegue en producción (e.g., con Vercel para frontend y Render/Heroku para backend).
-- Mejorar accesibilidad y diseño responsive.
 - Posible internacionalización (idiomas).
