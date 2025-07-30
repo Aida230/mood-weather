@@ -44,7 +44,7 @@ const SearchForm = ({ onSearchComplete, resetTrigger }) => {
       onSearchComplete(data);
     } catch (err) {
       setError(
-        err.response?.data?.error || "Error al conectar con el servidor"
+        err.response?.data?.message || "Error al conectar con el servidor"
       );
       onSearchComplete(null);
     } finally {
@@ -63,14 +63,14 @@ const SearchForm = ({ onSearchComplete, resetTrigger }) => {
       >
         <Search className="text-white mr-4" />
         <input
+          autoComplete="off"
           id="city-input"
           type="text"
           placeholder="Buscar ciudad..."
-          pattern="[a-zA-Z\sáéíóúÁÉÍÓÚüÜñÑ'-]{2,50}"
           value={city}
           onChange={(e) => setCity(e.target.value)}
           required
-          className="bg-transparent text-white placeholder-white outline-none w-full"
+          className="bg-transparent text-white outline-none w-full"
         />
         <button
           type="submit"
