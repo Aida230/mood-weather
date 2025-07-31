@@ -42,5 +42,5 @@ app.use('/mood', moodRoute);
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(`Mood Weather API funcionando en http://localhost:${PORT}`);
+  console.log("🔥 Versión con CORS actualizado");
 });
