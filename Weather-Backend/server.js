@@ -15,8 +15,11 @@ app.use(helmet());
 
 // Paso 3: configurar CORS
 app.use(cors({
-  origin: "http://localhost:5173", // el frontend de Vite en desarrollo
-  methods: ["GET"], // solo permitimos lectura
+  origin: [
+    "http://localhost:5173", //fronted en desarrollo
+    "https://mood-weather-frontend.vercel.app" //frontend en produccion
+  ],
+  methods: ["GET"],
   optionsSuccessStatus: 200
 }));
 
