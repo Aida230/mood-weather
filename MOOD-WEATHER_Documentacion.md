@@ -9,6 +9,7 @@
 ## 🧩 Tecnologías Utilizadas
 
 ### 🔙 Backend
+- **Backend Express en Render**, con **CORS** protegido y **rate limiter**
 - **Node.js** con **Express**
 - **Axios** (para llamadas HTTP)
 - **dotenv** (para manejar variables de entorno)
@@ -17,7 +18,7 @@
 - **Nominatim (OpenStreetMap)** (para geolocalización)
 
 ### 🔜 Frontend
-- **React 19** con **Vite**
+- **React 19** con **Vite** en **Vercel**, conectado al backend vía variable de entorno
 - **Tailwind CSS** (para estilos)
 - **Axios** (para peticiones al backend)
 - **React Spinners** (indicadores de carga)
@@ -99,7 +100,7 @@ app.use('/mood', moodRoute);
 
 ### 3. **Estilizado**
 - Tailwind CSS está configurado y funcionando correctamente.
-- Archivos CSS personalizados (`App.css` e `index.css`) agregan estilo base y animaciones.
+- Archivos CSS personalizados (`index.css`) agregan estilo base y animaciones.
 
 ---
 
@@ -126,6 +127,71 @@ plugins: [tailwindcss(), react()],
 
 ---
 
-## 🔜 Pendientes o Futuras Mejoras
-- Despliegue en producción (e.g., con Vercel para frontend y Render/Heroku para backend).
-- Posible internacionalización (idiomas).
+
+# 🌦️ Mood-Weather – Despliegue Full Stack con Monorepo (Render + Vercel)
+
+Este proyecto full stack está desarrollado en un **monorepo** llamado `Mood-Weather`, que contiene dos subcarpetas principales:
+
+Mood-Weather/
+├── Weather-Backend/ # Backend en Express
+├── Weather-Frontend/ # Frontend con Vite + React + Tailwind
+
+
+## 🚀 Backend: Desplegado en **Render**
+
+### 🛠️ Configuración
+
+1. Se creó un Web Service en [Render](https://render.com)
+2. Se seleccionó el repositorio `mood-weather` desde GitHub
+3. En la configuración del servicio se especificó:
+
+| Campo             | Valor                           |
+|-------------------|---------------------------------|
+| Root Directory    | `Weather-Backend`               |
+| Build Command     | `npm install`                   |
+| Start Command     | `npm start`                     |
+| Environment       | `Node`                          |
+| Plan              | `Free`                          |
+
+
+
+4. En el archivo `server.js`, se configuró **CORS** para permitir peticiones desde el frontend local y el dominio de Vercel:
+
+```js
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://mood-weather-frontend.vercel.app"
+  ],
+  methods: ["GET"],
+  optionsSuccessStatus: 200
+}));
+
+```
+## 🌐 Despliegue del Frontend en Vercel (desde Monorepo)
+
+El frontend de este proyecto (`Weather-Frontend`) está desplegado en [Vercel](https://vercel.com), utilizando una subcarpeta dentro del monorepo `mood-weather`.
+
+---
+
+### ✅ Repositorio
+
+- **Repositorio GitHub**: `mood-weather`
+- **Subcarpeta utilizada**: `Weather-Frontend`
+
+---
+
+### ⚙️ Configuración de Vercel
+
+| Campo                     | Valor                                          |
+|---------------------------|------------------------------------------------|
+| **Framework Preset**      | `Vite`                                         |
+| **Root Directory**        | `Weather-Frontend`                             |
+| **Build Command**         | `npm run build`                                |
+| **Install Command**       | `npm install`                                  |
+| **Output Directory**      | `dist`                                         |
+| **Plan**                  | `Free`                                         |
+
+---
+
+
